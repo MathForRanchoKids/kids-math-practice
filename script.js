@@ -13,13 +13,18 @@ function newProblem() {
         correctAnswer = Math.floor(Math.random() * 12) + 1;
         num1 = num2 * correctAnswer; // ensures clean division
     }
-    else {
+    else if (mode === "addition") {
         num1 = Math.floor(Math.random() * 20) + 1;
         num2 = Math.floor(Math.random() * 20) + 1;
-        if (mode === "subtraction" && num2 > num1) {
+        correctAnswer = num1 + num2;
+    }
+    else if (mode === "subtraction") {
+        num1 = Math.floor(Math.random() * 20) + 1;
+        num2 = Math.floor(Math.random() * 20) + 1;
+        if (num2 > num1) {
             [num1, num2] = [num2, num1]; // avoid negative answers
         }
-        correctAnswer = mode === "addition" ? num1 + num2 : num1 - num2;
+        correctAnswer = num1 - num2;
     }
 
     let symbol = {
@@ -33,7 +38,6 @@ function newProblem() {
     document.getElementById("answer").value = "";
     document.getElementById("feedback").innerText = "";
 }
-
 function checkAnswer() {
     const userAnswer = parseFloat(document.getElementById("answer").value);
     if (userAnswer === correctAnswer) {

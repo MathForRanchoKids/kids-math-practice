@@ -53,5 +53,5 @@ function setMode(newMode) {
     newProblem();
 }
 
-// Start with a problem
+// Start with a problem here
 newProblem();

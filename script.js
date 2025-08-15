@@ -1,61 +1,57 @@
-let currentAnswer = 0;
 let currentOperation = '+';
+let num1, num2;
 
-function newProblem(operation) {
-    currentOperation = operation;
+function setOperation(op) {
+  currentOperation = op;
+  generateProblem();
+}
 
-    let num1 = Math.floor(Math.random() * 90) + 10; // 2-digit numbers
-    let num2 = Math.floor(Math.random() * 90) + 10;
+function generateProblem() {
+  num1 = Math.floor(Math.random() * 50) + 1;
+  num2 = Math.floor(Math.random() * 50) + 1;
 
-    let symbol;
-    switch (operation) {
-        case 'add':
-            symbol = '+';
-            currentAnswer = num1 + num2;
-            break;
-        case 'subtract':
-            symbol = '−';
-            if (num2 > num1) [num1, num2] = [num2, num1];
-            currentAnswer = num1 - num2;
-            break;
-        case 'multiply':
-            symbol = '×';
-            num1 = Math.floor(Math.random() * 12) + 1; // smaller numbers
-            num2 = Math.floor(Math.random() * 12) + 1;
-            currentAnswer = num1 * num2;
-            break;
-        case 'divide':
-            symbol = '÷';
-            num2 = Math.floor(Math.random() * 12) + 1;
-            num1 = num2 * (Math.floor(Math.random() * 12) + 1);
-            currentAnswer = num1 / num2;
-            break;
-    }
+  if (currentOperation === '-' && num2 > num1) {
+    [num1, num2] = [num2, num1];
+  }
 
-    document.getElementById("problem").innerHTML = `
-        <div class="problem-vertical">
-            ${num1}<br>
-            ${symbol} ${num2}
-            <hr>
-        </div>
-    `;
+  if (currentOperation === '/') {
+    num2 = Math.floor(Math.random() * 12) + 1;
+    num1 = num2 * (Math.floor(Math.random() * 12) + 1);
+  }
 
-    document.getElementById("answer").value = '';
-    document.getElementById("feedback").textContent = '';
+  document.getElementById('num1').textContent = num1;
+  document.getElementById('num2').textContent = num2;
+  document.getElementById('operation').textContent = currentOperation;
+  document.getElementById('answer').value = '';
+  document.getElementById('result').textContent = '';
 }
 
 function checkAnswer() {
-    let userAnswer = parseFloat(document.getElementById("answer").value);
-    if (isNaN(userAnswer)) {
-        document.getElementById("feedback").textContent = "Please enter a number!";
-        document.getElementById("feedback").style.color = "red";
-        return;
-    }
-    if (userAnswer === currentAnswer) {
-        document.getElementById("feedback").textContent = "✅ Correct!";
-        document.getElementById("feedback").style.color = "green";
-    } else {
-        document.getElementById("feedback").textContent = `❌ Try again. Answer is ${currentAnswer}`;
-        document.getElementById("feedback").style.color = "red";
-    }
+  let userAnswer = Number(document.getElementById('answer').value);
+  let correctAnswer;
+
+  switch (currentOperation) {
+    case '+':
+      correctAnswer = num1 + num2;
+      break;
+    case '-':
+      correctAnswer = num1 - num2;
+      break;
+    case '*':
+      correctAnswer = num1 * num2;
+      break;
+    case '/':
+      correctAnswer = num1 / num2;
+      break;
+  }
+
+  if (userAnswer === correctAnswer) {
+    document.getElementById('result').textContent = '✅ Correct!';
+  } else {
+    document.getElementById('result').textContent = `❌ Wrong! The answer is ${correctAnswer}`;
+  }
+
+  generateProblem();
 }
+
+generateProblem();

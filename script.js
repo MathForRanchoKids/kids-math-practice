@@ -1,57 +1,30 @@
-let mode = "addition";
-let num1, num2, correctAnswer;
-let score = 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Practice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Math Practice</h1>
 
-function newProblem() {
-    if (mode === "multiplication") {
-        num1 = Math.floor(Math.random() * 12) + 1;
-        num2 = Math.floor(Math.random() * 12) + 1;
-        correctAnswer = num1 * num2;
-    }
-    else if (mode === "division") {
-        num2 = Math.floor(Math.random() * 12) + 1;
-        correctAnswer = Math.floor(Math.random() * 12) + 1;
-        num1 = num2 * correctAnswer; // ensures clean division
-    }
-    else {
-        num1 = Math.floor(Math.random() * 20) + 1;
-        num2 = Math.floor(Math.random() * 20) + 1;
-        if (mode === "subtraction" && num2 > num1) {
-            [num1, num2] = [num2, num1]; // avoid negative answers
-        }
-        correctAnswer = mode === "addition" ? num1 + num2 : num1 - num2;
-    }
+    <div id="mode-buttons">
+        <button onclick="setMode('addition')">Addition</button>
+        <button onclick="setMode('subtraction')">Subtraction</button>
+        <button onclick="setMode('multiplication')">Multiplication</button>
+        <button onclick="setMode('division')">Division</button>
+    </div>
 
-    let symbol = {
-        addition: "+",
-        subtraction: "-",
-        multiplication: "×",
-        division: "÷"
-    }[mode];
+    <div id="problem-container">
+        <p id="problem"></p>
+        <input type="number" id="answer" placeholder="Your answer" onkeydown="if(event.key==='Enter') checkAnswer()">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="feedback"></p>
+    </div>
 
-    document.getElementById("problem").innerText = `${num1} ${symbol} ${num2} = ?`;
-    document.getElementById("answer").value = "";
-    document.getElementById("feedback").innerText = "";
-}
+    <p>Score: <span id="score">0</span></p>
 
-function checkAnswer() {
-    const userAnswer = parseFloat(document.getElementById("answer").value);
-    if (userAnswer === correctAnswer) {
-        document.getElementById("feedback").innerText = "✅ Correct!";
-        document.getElementById("feedback").style.color = "green";
-        score++;
-    } else {
-        document.getElementById("feedback").innerText = `❌ Oops! The answer was ${correctAnswer}`;
-        document.getElementById("feedback").style.color = "red";
-    }
-    document.getElementById("score").innerText = score;
-    setTimeout(newProblem, 1000);
-}
-
-function setMode(newMode) {
-    mode = newMode;
-    newProblem();
-}
-
-// Start with a problem
-newProblem();
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,20 +1,15 @@
 body {
-    background-color: #f0f8ff;
     font-family: Arial, sans-serif;
     text-align: center;
+    margin-top: 50px;
+    background-color: #f9f9f9;
 }
 
-.container {
-    max-width: 400px;
-    margin: 50px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
-}
-
-h1 {
-    color: #2c3e50;
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 1em;
+    cursor: pointer;
 }
 
 #problem {
@@ -22,54 +17,16 @@ h1 {
     margin: 20px 0;
 }
 
-input {
-    font-size: 1.2em;
-    padding: 10px;
+.problem-vertical {
+    text-align: right;
+    display: inline-block;
+    font-size: 2em;
+    line-height: 1.2;
+}
+
+.problem-vertical hr {
+    margin: 5px 0 0 0;
+    border: 1px solid #000;
     width: 80%;
-    margin-bottom: 10px;
-}
-
-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 12px 20px;
-    font-size: 1.1em;
-    margin: 5px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-.controls button {
-    background-color: #3498db;
-}
-
-.controls button:hover {
-    background-color: #2980b9;
-}
-
-.controls button:nth-child(3) { /* Multiplication */
-    background-color: #e67e22;
-}
-
-.controls button:nth-child(3):hover {
-    background-color: #d35400;
-}
-
-.controls button:nth-child(4) { /* Division */
-    background-color: #9b59b6;
-}
-
-.controls button:nth-child(4):hover {
-    background-color: #8e44ad;
-}
-
-#feedback {
-    font-weight: bold;
-    margin-top: 10px;
-    font-size: 1.2em;
+    margin-left: auto;
 }

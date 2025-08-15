@@ -52,6 +52,22 @@ button:hover {
     background-color: #2980b9;
 }
 
+.controls button:nth-child(3) { /* Multiplication */
+    background-color: #e67e22;
+}
+
+.controls button:nth-child(3):hover {
+    background-color: #d35400;
+}
+
+.controls button:nth-child(4) { /* Division */
+    background-color: #9b59b6;
+}
+
+.controls button:nth-child(4):hover {
+    background-color: #8e44ad;
+}
+
 #feedback {
     font-weight: bold;
     margin-top: 10px;

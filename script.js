@@ -29,7 +29,7 @@ function newProblem() {
         division: "÷"
     }[mode];
 
-    document.getElementById("problem").innerText = `${num1} <br> ${symbol} <br> ${num2} = ?`;
+    document.getElementById("problem").innerText = `${num1}  ${symbol}  ${num2} = ?`;
     document.getElementById("answer").value = "";
     document.getElementById("feedback").innerText = "";
 }

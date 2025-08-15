@@ -1,49 +1,59 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f0f8ff;
+    background-color: #f0f8ff;
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 .container {
-  max-width: 400px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
 }
 
 h1 {
-  color: #333;
-}
-
-.buttons button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px 15px;
-  margin: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.buttons button:hover {
-  background-color: #45a049;
+    color: #2c3e50;
 }
 
 #problem {
-  font-size: 24px;
-  margin: 20px 0;
+    font-size: 2em;
+    margin: 20px 0;
 }
 
-#answer {
-  padding: 10px;
-  font-size: 16px;
-  width: 100px;
+input {
+    font-size: 1.2em;
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 10px;
 }
 
-#result {
-  margin-top: 15px;
-  font-size: 18px;
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.controls button {
+    background-color: #3498db;
+}
+
+.controls button:hover {
+    background-color: #2980b9;
+}
+
+#feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.2em;
 }

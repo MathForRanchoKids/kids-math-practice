@@ -1,0 +1,59 @@
+body {
+  background-color: #f0f8ff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #2c3e50;
+}
+
+#problem {
+  font-size: 2em;
+  margin: 20px 0;
+}
+
+input {
+  font-size: 1.2em;
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.1em;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.controls button {
+  background-color: #3498db;
+}
+
+.controls button:hover {
+  background-color: #2980b9;
+}
+
+#feedback {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 1.2em;
+}

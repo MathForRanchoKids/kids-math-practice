@@ -172,6 +172,18 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
+        #top-score {
+            color: #4ecdc4;
+            font-size: 24px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        @keyframes scoreUpdate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
         /* Confetti styles */
         .confetti {
             position: fixed;
@@ -388,6 +400,7 @@
         <p id="feedback"></p>
     </div>
     <p>Score: <span id="score">0</span></p>
+    <p>Top Score: <span id="top-score">0</span></p>
 
     <!-- Racing Track -->
     <div id="racing-track">
@@ -410,6 +423,42 @@
         let turtlePosition = 0;
         let rabbbitPosition = 0;
         let currentRace = 1; // Track which race we're on (1st to 10, 2nd to 20, etc.)
+        let topScore = 0;
+
+        // Load top score from localStorage when page loads
+        function loadTopScore() {
+            const saved = localStorage.getItem('mathPracticeTopScore');
+            if (saved) {
+                topScore = parseInt(saved);
+                document.getElementById("top-score").innerText = topScore;
+            }
+        }
+
+        // Save top score to localStorage
+        function saveTopScore() {
+            localStorage.setItem('mathPracticeTopScore', topScore.toString());
+        }
+
+        // Update top score if current score is higher
+        function updateTopScore() {
+            if (score > topScore) {
+                topScore = score;
+                document.getElementById("top-score").innerText = topScore;
+                document.getElementById("top-score").style.color = "#ff6b6b";
+                document.getElementById("top-score").style.animation = "scoreUpdate 1s ease-out";
+                saveTopScore();
+                
+                // Show new record message
+                setTimeout(() => {
+                    showMessage("🏆 NEW RECORD! 🏆");
+                }, 500);
+                
+                // Reset animation after it completes
+                setTimeout(() => {
+                    document.getElementById("top-score").style.animation = "";
+                }, 1000);
+            }
+        }
 
         function newProblem() {
             if (mode === "multiplication") {
@@ -553,6 +602,7 @@
                 document.getElementById("feedback").style.color = "green";
                 score++;
                 moveTurtle(); // Move turtle forward for correct answer
+                updateTopScore(); // Check and update top score
                 
             } else {
                 document.getElementById("feedback").innerText = `❌ Oops! The answer was ${correctAnswer}`;
@@ -568,7 +618,8 @@
             newProblem();
         }
 
-        // Start with a problem
+        // Initialize the app
+        loadTopScore();
         newProblem();
     </script>
 </body>

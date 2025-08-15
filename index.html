@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kids Math Practice</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Math Practice</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Math Practice</h1>
-    <div class="buttons">
-      <button onclick="setOperation('+')">Addition (+)</button>
-      <button onclick="setOperation('-')">Subtraction (-)</button>
-      <button onclick="setOperation('*')">Multiplication (×)</button>
-      <button onclick="setOperation('/')">Division (÷)</button>
+    <div class="container">
+        <h1>🧮 Kids Math Practice</h1>
+        <p id="problem"></p>
+        
+        <input type="number" id="answer" placeholder="Your answer">
+        <button onclick="checkAnswer()">✅ Check</button>
+        
+        <p id="feedback"></p>
+        <p>Score: <span id="score">0</span></p>
+        
+        <div class="controls">
+            <button onclick="setMode('addition')">➕ Addition</button>
+            <button onclick="setMode('subtraction')">➖ Subtraction</button>
+        </div>
     </div>
-    <div id="problem"></div>
-    <input type="number" id="answer" placeholder="Your answer">
-    <button onclick="checkAnswer()">Check</button>
-    <div id="result"></div>
-  </div>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

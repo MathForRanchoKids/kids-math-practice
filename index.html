@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kids Math Practice</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Kids Math Practice</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🧮 Kids Math Practice</h1>
-        <p id="problem"></p>
-        
-        <input type="number" id="answer" placeholder="Your answer">
-        <button onclick="checkAnswer()">✅ Check</button>
-        
-        <p id="feedback"></p>
-        <p>Score: <span id="score">0</span></p>
-        
-        <div class="controls">
-            <button onclick="setMode('addition')">➕ Addition</button>
-            <button onclick="setMode('subtraction')">➖ Subtraction</button>
-            <button onclick="setMode('multiplication')">✖ Multiplication</button>
-            <button onclick="setMode('division')">➗ Division</button>
-        </div>
+  <h1>Kids Math Practice</h1>
+  <div id="buttons">
+    <button onclick="setOperation('+')">Addition</button>
+    <button onclick="setOperation('-')">Subtraction</button>
+    <button onclick="setOperation('*')">Multiplication</button>
+    <button onclick="setOperation('/')">Division</button>
+  </div>
+
+  <div id="problem" class="vertical-problem">
+    <div class="number" id="num1">0</div>
+    <div class="operation-line">
+      <span id="operation">+</span>
+      <span class="number" id="num2">0</span>
     </div>
-    <script src="script.js"></script>
+    <hr>
+  </div>
+
+  <input type="number" id="answer" placeholder="Your answer">
+  <button onclick="checkAnswer()">Check</button>
+  <p id="result"></p>
+
+  <script src="script.js"></script>
 </body>
 </html>
